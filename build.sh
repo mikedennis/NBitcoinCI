@@ -3,7 +3,7 @@ dotnet --info
 echo STARTED git clone
 git clone --single-branch --branch altcoin-strat-wip https://github.com/mikedennis/NBitcoin.git
 
-echo STARTED dotnet build
+echo STARTED dotnet build --framework netcoreapp2.1
 cd NBitcoin
 dotnet build
 
@@ -12,7 +12,8 @@ echo STARTED dotnet test
 ANYFAILURES=false
 
 echo "Running Altcoin Tests.."; 
-COMMAND="dotnet test NBitcoin.Tests.csproj --filter "Altcoins=Altcoins" -p:ParallelizeTestCollections=false --framework netcoreapp2.1"
+cd NBitcoin.Tests
+COMMAND="dotnet test NBitcoin.Tests.csproj --filter Altcoins=Altcoins -p:ParallelizeTestCollections=false --framework netcoreapp2.1"
 $COMMAND
 EXITCODE=$?
 echo exit code for $testProject: $EXITCODE
