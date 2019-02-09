@@ -1,8 +1,7 @@
 #!/bin/bash
 dotnet --info
 echo STARTED git clone
-git clone https://github.com/mikedennis/NBitcoin.git
-git checkout altcoin-strat-wip
+git clone --single-branch --branch altcoin-strat-wip https://github.com/mikedennis/NBitcoin.git
 
 echo STARTED dotnet build
 cd NBitcoin
